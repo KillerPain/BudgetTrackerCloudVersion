@@ -1,0 +1,20 @@
+:host {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    background: #1e5799;
+    /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #1e5799 15%, #207cca 40%, #207cca 54%, #2989d8 62%, #2989d8 74%, #7db9e8 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #1e5799 15%, #207cca 40%, #207cca 54%, #2989d8 62%, #2989d8 74%, #7db9e8 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #1e5799 15%, #207cca 40%, #207cca 54%, #2989d8 62%, #2989d8 74%, #7db9e8 100%);
+    .header {
+        padding: 20px 40px;
+    }
+    .container {
+        display: flex;
+        flex: 1 0 auto;
+        margin-right: 300px;
+    }
+}

@@ -1,0 +1,33 @@
+@import '~@angular/material/theming';
+@include mat-core();
+$sidenav-primary: mat-palette($mat-light-blue);
+$sidenav-accent: mat-palette($mat-blue, A700, A400, A700);
+$sidenav-warn: mat-palette($mat-red);
+:host {
+    display: flex;
+    flex: 1 0 auto;
+    // width: 300px;
+    height: 100%;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    position: absolute;
+    background-color: white;
+    right: 0;
+    top: 0;
+    .ratings-container {
+        display: flex;
+        flex: 1 0 auto;
+        max-width: 300px;
+        flex-direction: column;
+        .header {
+            display: flex;
+            justify-content: center;
+            min-height: 65px;
+            background-color: mat-color($sidenav-primary);
+            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: white;
+            z-index: 10;
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<bt-sidenav [@slideIn]="state"></bt-sidenav>
+<div class="header">
+    <button mat-mini-fab (click)="showSideNav()" color="warn"><mat-icon>menu</mat-icon></button>
+</div>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+<bt-ratings></bt-ratings>
