@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, Input, ElementRef, ViewEncapsulation } from '@angular/core';
-import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { OnChanges, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { ProfileService } from '../../shared/profile/profile.service';
+import { setInterval } from 'timers';
 declare let d3: any;
 
 @Component({
@@ -7,15 +9,26 @@ declare let d3: any;
   templateUrl: './graphics.component.html',
   styleUrls: ['./graphics.component.scss']
 })
-export class GraphicsComponent implements OnInit, OnChanges {
+export class GraphicsComponent implements OnInit, OnChanges, OnDestroy {
 
   options = {};
   data = [];
   chartType;
+  transactions = [];
 
-  constructor() { }
+  constructor(private service: ProfileService) { }
 
   ngOnInit() {
+    console.log("initing");
+    console.log(this.options);
+    console.log(this.data);
+    this.options = {};
+    this.data = [];
+    setInterval(
+      () => {
+        this.getData();
+      }, 1000
+    );
     this.options = {
       chart: {
         type: 'lineChart',
@@ -30,17 +43,20 @@ export class GraphicsComponent implements OnInit, OnChanges {
         y: function(d){ return d.y; },
         useInteractiveGuideline: true,
         xAxis: {
-          axisLabel: 'Time (ms)'
+          axisLabel: 'Time (day)'
         },
         yAxis: {
-          axisLabel: 'Voltage (v)',
+          axisLabel: 'Price ($)',
           tickFormat: function(d){
-            return d3.format('.02f')(d);
+            return d3.format('.2f')(d);
           },
           axisLabelDistance: -10
         }
       }
     };
+    setInterval(() => {
+      this.data = this.sinAndCos();
+    }, 1000);
     this.data = this.sinAndCos();
   }
 
@@ -48,12 +64,21 @@ export class GraphicsComponent implements OnInit, OnChanges {
   }
 
   sinAndCos() {
-    const sin = [], sin2 = [], cos = [];
-
-    for (let i = 0; i < 100; i++) {
-      sin2.push({x: i, y: i % 10 === 5 ? null : Math.sin(i / 10) * 0.25 + 0.5});
+    let sin = [], sin2 = [], cos = [];
+    if (this.transactions.length > 1) {
+      sin2 = this.transactions;
+      return [
+        {
+          values: sin2,
+          key: 'Transactions',
+          color: '#ff7f0e',
+          area: true
+        }
+      ];
     }
-
+    for (let i = 1; i < 32; i++) {
+      sin2.push({x: i, y: 0});
+    }
     return [
       {
         values: sin2,
@@ -62,5 +87,27 @@ export class GraphicsComponent implements OnInit, OnChanges {
         area: true
       }
     ];
+  }
+
+  ngOnDestroy() {
+    console.log("destroying");
+    console.log(this.options);
+    console.log(this.data);
+    this.options = {};
+    this.data = [];
+    console.log(this.options);
+    console.log(this.data);
+  }
+
+  getData() {
+    for (let i = 1; i < 32; i++) {
+      this.transactions.push({x: i, y: 0});
+    }
+    const today = new Date();
+    this.service.getTransactions().subscribe((data: any) => {
+      for (let i = 0; i < data.length; i ++) {
+        this.transactions.push({x: today.getDate() , y: parseInt(data[i].price)});
+      }
+    });
   }
 }

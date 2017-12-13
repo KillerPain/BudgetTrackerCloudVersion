@@ -1,3 +1,48 @@
-<p>
-  profile works!
-</p>
+<div class="container">
+    <div class="img" (click)="uploadImage()">
+        <img src="{{photo}}" alt="">
+        <!-- <img src="https://orig00.deviantart.net/dee3/f/2015/048/d/0/miku_hatsune_by_miyukimineko_by_miyukimineko-d8ie91x.png" alt=""> -->
+    </div>
+    <div class="profile">
+        <div class="card">
+            <div class="header"><span><h2>Profile</h2></span></div>
+            <div class="content">
+                <div class="group">
+                    <div class="label">
+                        <h4>UserName:</h4>
+                    </div>
+                    <div class="data">
+                        <p>{{profile?.username}}</p>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="label">
+                        <h4>First Name:</h4>
+                    </div>
+                    <div class="data">
+                        <p>{{profile?.firstname}}</p>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="label">
+                        <h4>Last Name:</h4>
+                    </div>
+                    <div class="data">
+                        <p>{{profile?.lastname}}</p>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="label">
+                        <h4>Email:</h4>
+                    </div>
+                    <div class="data">
+                        <p>{{profile?.email}}</p>
+                    </div>
+                </div>
+                <div class="group">
+                    <button mat-button (click)="openDialog()">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

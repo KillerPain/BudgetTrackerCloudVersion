@@ -13,21 +13,33 @@ import { MainModule } from './main/main.module';
 import { MaterialModule } from './material/material.module';
 import { CoreComponent } from './core/core.component';
 import { GraphicsComponent } from './core/graphics/graphics.component';
+import { AuthService } from './auth/auth.service';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { FileComponent } from './file/file.component';
+import { FormComponent } from './core/form/form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    FileComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    HttpModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MainModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [AuthService],
+  entryComponents: [FileComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

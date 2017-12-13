@@ -1,0 +1,42 @@
+<div class="container" [class.active]="active">
+    <div class="card"></div>
+    <div class="card">
+        <h1 class="title">Login</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+            <mat-form-field class="sing">
+                <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field class="sing">
+                <input matInput type="password" placeholder="Password" value="" formControlName="password">
+            </mat-form-field>
+            <div class="button-container">
+                <button mat-button (click)="onLoginSubmit()">Login</button>
+            </div>
+        </form>
+    </div>
+    <div class="card alt">
+        <div class="toggle" (click)="register()">
+            <mat-icon>border_color</mat-icon>
+        </div>
+        <h1 class="title">Register
+            <div class="close" (click)="register()"></div>
+        </h1>
+        <form [formGroup]="registerFrom" (ngSubmit)="onRegisternSubmit()">
+            <mat-form-field class="sing">
+                <input matInput placeholder="UserName" value="" formControlName="username">
+            </mat-form-field>
+            <mat-form-field class="sing">
+                <input matInput type="email" placeholder="Email" value="" formControlName="email">
+            </mat-form-field>
+            <mat-form-field class="sing">
+                <input matInput type="password" placeholder="Password" value="" formControlName="password">
+            </mat-form-field>
+            <mat-form-field class="sing">
+                <input matInput type="password" placeholder="Comfirm Password" value="">
+            </mat-form-field>
+            <div class="button-container">
+                <button routerLink="main" (click)="onRegisternSubmit()"><span>Next</span></button>
+            </div>
+        </form>
+    </div>
+</div>

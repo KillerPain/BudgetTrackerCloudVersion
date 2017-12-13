@@ -15,16 +15,25 @@ import { GraphicsComponent } from '../core/graphics/graphics.component';
 
 import 'd3';
 import 'nvd3';
+import { AuthService } from '../auth/auth.service';
+import { AwsService } from '../services/aws.service';
+import { ProfileService } from '../shared/profile/profile.service';
+import { FormComponent } from '../core/form/form.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     MainRoutingModule,
     MaterialModule,
-    NvD3Module
+    NvD3Module,
+    ReactiveFormsModule
   ],
-  declarations: [SidenavComponent, RatingsComponent, MainComponent, CoreComponent, ModalComponent, ProfileComponent, GraphicsComponent],
-  exports: [SidenavComponent, RatingsComponent, MainComponent, CoreComponent, ModalComponent, ProfileComponent, GraphicsComponent],
-  providers: [SidenavService]
+  // tslint:disable-next-line:max-line-length
+  declarations: [SidenavComponent, RatingsComponent, MainComponent, CoreComponent, ModalComponent, ProfileComponent, GraphicsComponent, FormComponent],
+  exports: [SidenavComponent, RatingsComponent, MainComponent, CoreComponent, ModalComponent, ProfileComponent, GraphicsComponent, FormComponent],
+  providers: [SidenavService, AuthService, AwsService, ProfileService],
+  entryComponents: [FormComponent, ModalComponent]
 })
 export class MainModule { }

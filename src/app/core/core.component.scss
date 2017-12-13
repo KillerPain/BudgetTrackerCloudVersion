@@ -1,6 +1,11 @@
 :host {
     display: flex;
     flex: 1 0 auto;
+    button {
+        position: absolute;
+        left: 10%;
+        top: 2.2%;
+    }
     .container {
         display: flex;
         flex: 1 0 auto;

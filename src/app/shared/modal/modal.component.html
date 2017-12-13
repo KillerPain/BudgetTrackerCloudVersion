@@ -1,0 +1,19 @@
+<form [formGroup]="editForm" (ngSubmit)="onFormSubmit()">
+    <h2>Create Transaction</h2>
+    <mat-form-field class="sing">
+        <input matInput placeholder="User Name" formControlName="username" [value]="username || ''">
+    </mat-form-field>
+    <mat-form-field class="sing">
+        <input matInput placeholder="First Name" formControlName="firstname" [value]="firstname || ''">
+    </mat-form-field>
+    <mat-form-field class="sing">
+        <input matInput placeholder="Last Name" formControlName="lastname" [value]="lastname || ''">
+    </mat-form-field>
+    <mat-form-field class="sing">
+        <input matInput type="email" placeholder="Email" formControlName="email" [value]="email || ''">
+    </mat-form-field>
+    <div class="button-container">
+        <button mat-button (click)="onCancel()">Cancel</button>
+        <button mat-button type="submit">Create</button>
+    </div>
+</form>

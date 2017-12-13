@@ -4,14 +4,18 @@
         <button mat-mini-fab (click)="escape()"><mat-icon>keyboard_arrow_left</mat-icon></button>
     </div>
     <mat-list>
-        <mat-list-item>
-            <mat-icon mat-list-icon>edit</mat-icon>
-            <h4 mat-line>Edit Profile</h4>
+        <mat-list-item routerLink="profile" (click)="escape()">
+            <mat-icon mat-list-icon>account_circle</mat-icon>
+            <h4 mat-line>Profile</h4>
         </mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>
-            <mat-icon mat-list-icon>settings</mat-icon>
-            <h4 mat-line>Settings</h4>
+        <mat-list-item routerLink="/main" (click)="escape()">
+            <mat-icon mat-list-icon>attach_money</mat-icon>
+            <h4 mat-line>Transactions</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/" (click)="logOut()">
+            <h4 mat-line>Log Out</h4>
         </mat-list-item>
         <mat-divider></mat-divider>
     </mat-list>

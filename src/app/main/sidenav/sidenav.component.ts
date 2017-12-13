@@ -20,4 +20,8 @@ export class SidenavComponent implements OnInit {
   escape() {
     this.sidenavService.change(this.show);
   }
+
+  logOut() {
+   localStorage.removeItem('currentUser');
+  }
 }

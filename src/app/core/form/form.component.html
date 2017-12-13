@@ -1,0 +1,13 @@
+<form [formGroup]="transactionForm" (ngSubmit)="onFormSubmit()">
+    <h2>Create Transaction</h2>
+    <mat-form-field class="sing">
+        <input matInput placeholder="Name of Product" formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="sing">
+        <input matInput type="number" placeholder="Price" formControlName="price">
+    </mat-form-field>
+    <div class="button-container">
+        <button mat-button (click)="onCancel()">Cancel</button>
+        <button mat-button type="submit">Create</button>
+    </div>
+</form>

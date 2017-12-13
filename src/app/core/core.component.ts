@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { FormComponent } from './form/form.component';
 
 @Component({
   selector: 'bt-core',
@@ -7,12 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoreComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  generateData() {
+  openDialog() {
+    this.dialog.open(FormComponent);
   }
-
 }
